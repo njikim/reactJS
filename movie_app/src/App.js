@@ -84,7 +84,6 @@ class App extends Component {
     return (
     <div className="App">
       {this.state.movies ? this._renderMovies(): 'loading'} 
-      
     </div>
     );
   }
