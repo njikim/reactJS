@@ -23,15 +23,6 @@ class Movie extends Component{
 }
 */
 
-function Movie({title, poster}){
-    return (
-        <div>
-            <h2> hello this is a movie </h2>
-            <MoviePoster poster={poster} />
-            <h2>{title}</h2>
-        </div>
-    )
-}
 /*
 class MoviePoster extends Component{
     
@@ -48,20 +39,52 @@ class MoviePoster extends Component{
 }
 */
 
-function MoviePoster({poster}){
+
+function Movie({title, poster, genres, synopsis}){
     return (
-        <img src={poster} alt="Movie Poster"/>
+        <div className="Movie">
+            <div className="Movie_Columns">
+                <MoviePoster poster={poster} alt={title} />
+            </div>
+            <div className="Movie_columns">
+                <h2>{title}</h2>
+                <div className="Movie_Genre">
+                    {genres.map((genre, index) => <MovieGenre genre={genre} key={index} /> )}
+                </div>
+                <p className="Movie_Synopsis">
+                    {synopsis}
+                </p>
+            </div>
+        </div>
+    )
+}
+
+
+function MoviePoster({poster, alt}){
+    return (
+        <img src={poster} alt={alt} title={alt} className="Movie_Poster" />
+    )
+}
+
+function MovieGenre({genre}){
+    return (
+        <span className="Movie_Genre">{genre}</span>
     )
 }
 
 Movie.propTypes = {
     title:PropTypes.string.isRequired,
-    poster:PropTypes.string.isRequired
+    poster:PropTypes.string.isRequired,
+    genres: PropTypes.array.isRequired,
+    synopsis: PropTypes.string.isRequired
 }
 
 MoviePoster.propTypes = {
-    poster: PropTypes.string.isRequired
+    poster: PropTypes.string.isRequired,
+    alt: PropTypes.string.isRequired
 }
 
-
+MovieGenre.propTypes = {
+    genre: PropTypes.string.isRequired
+}
 export default Movie;
