@@ -1,27 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Movie from './Movie';
 
-function App() {
-  return (
+const movieTitles = [
+  "Matrix",
+  "Full Metal Jacket",
+  "Oldboy",
+  "Star wars"
+]
+
+const movieImages = [
+  "https://cdn-images-1.medium.com/max/1600/1*XZrU5omVCZPZXuYv2AZnog.jpeg",
+  "https://images2.minutemediacdn.com/image/upload/c_crop,h_2132,w_3794,x_0,y_22/f_auto,w_1100/v1555155644/shape/mentalfloss/full-metal-jacket-hed.jpg",
+  "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Oldboykoreanposter.jpg/220px-Oldboykoreanposter.jpg",
+  "https://starwarsblog.starwars.com/wp-content/uploads/2019/03/star-wars-celebration-chicago-lightspeed-tall-C.jpg"
+]
+
+
+class App extends Component {
+  render(){
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <h1>hi! my first react app</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Movie title={movieTitles[0]} poster={movieImages[0]}/>
+      <Movie title={movieTitles[1]} poster={movieImages[1]}/>
+      <Movie title={movieTitles[2]} poster={movieImages[2]}/>
+      <Movie title={movieTitles[3]} poster={movieImages[3]}/>
     </div>
-  );
+    );
+  }
 }
 
 export default App;
